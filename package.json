@@ -4,19 +4,38 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon -e jsx,js --ignore node_modules/ index.js",
-    "debug": "node --inspect --debug-brk index.js"
+    "start": "npm-run-all --parallel start-client:dev start-server:dev start-proc:dev",
+    "start:prod": "npm-run-all start-client:prod start-server:prod start-proc:prod",
+    "start-client:dev": "webpack --watch --config \"./webpack.config.client.babel.js\" --colors",
+    "start-client:prod": "webpack --config \"./webpack.config.client.babel.js\" --colors",
+    "start-server:dev": "webpack --watch --config \"./webpack.config.server.babel.js\" --colors",
+    "start-server:prod": "webpack --config \"./webpack.config.server.babel.js\" --colors",
+    "start-proc:dev": "nodemon \"./server/start-server.babel\" --watch \"./build/server\"",
+    "start-proc:prod": "node \"./server/start-server.babel\""
   },
   "dependencies": {
+    "autoprefixer": "^6.7.7",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.24.1",
     "express": "^4.15.2",
+    "extract-text-webpack-plugin": "^2.1.0",
     "node-inspector": "^1.0.1",
     "nodemon": "^1.11.0",
+    "npm-run-all": "^4.0.2",
+    "path": "^0.12.7",
+    "postcss-calc": "^5.3.1",
+    "postcss-custom-properties": "^5.0.2",
     "raven": "^1.2.1",
     "react": "^15.5.3",
-    "react-dom": "^15.5.3"
+    "react-dom": "^15.5.3",
+    "universal-webpack": "^0.3.9",
+    "webpack": "^2.3.3",
+    "webpack-dev-server": "^2.4.2"
   }
 }
