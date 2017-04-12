@@ -1,10 +1,10 @@
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import Home from './pages/home.jsx';
 import About from './pages/about.jsx';
 import FourOhFour from './pages/error/FourOhFour.jsx';
+import Home from './pages/home.jsx';
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 
-const renderPage = (route) => {
+function renderPage(route) {
     const component = resolveReactElement(route);
     const partial = renderPartial(component);
     return `<html>
@@ -15,15 +15,14 @@ const renderPage = (route) => {
             ${partial}
         </body>
     </html>`;
-};
+}
 
-const renderPartial = (component) => {
+function renderPartial(component) {
     return ReactDOMServer.renderToString(component);
 }
 
-const resolveReactElement = (route) => {
-    let partial;
-    switch(route) {
+function resolveReactElement(route) {
+    switch (route) {
         case '/home':
             return <Home />;
         case '/about':

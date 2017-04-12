@@ -1,6 +1,6 @@
-import startServer from 'universal-webpack/server'
-import settings from '../universal-webpack-settings'
+import configuration from '../webpack.config';
+import settings from '../universal-webpack-settings';
+import startServer from 'universal-webpack/server';
 // `configuration.context` and `configuration.output.path` are used
-import configuration from '../webpack.config'
 
-startServer(configuration, settings)
+startServer(configuration, settings);

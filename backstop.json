@@ -1,0 +1,115 @@
+{
+  "viewports": [
+    {
+      "name": "phone",
+      "width": 320,
+      "height": 480
+    },
+    {
+      "name": "phablet_v",
+      "width": 568,
+      "height": 1024
+    },
+    {
+      "name": "tablet_v",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "name": "tablet_h",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "scenarios": [
+    {
+      "label": "Home",
+      "url": "http://localhost:5000",
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "selectors": [
+        "header",
+        "main",
+        "footer"
+      ],
+      "readyEvent": "backstopjs_ready",
+      "delay": 800,
+      "misMatchThreshold": 0.1,
+      "onBeforeScript": "on-before.js",
+      "onReadyScript": "on-ready.js"
+    },
+    {
+      "label": "Style Guide",
+      "url": "http://localhost:5000/style-guide",
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "selectors": [
+        "main"
+      ],
+      "readyEvent": "backstopjs_ready",
+      "delay": 800,
+      "misMatchThreshold": 0.1,
+      "onBeforeScript": "on-before.js",
+      "onReadyScript": "on-ready.js"
+    },
+    {
+      "label": "Event",
+      "url": "http://localhost:5000/event/summer-in-the-park",
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "selectors": [
+        "main"
+      ],
+      "readyEvent": "backstopjs_ready",
+      "delay": 800,
+      "misMatchThreshold": 0.1,
+      "onBeforeScript": "on-before.js",
+      "onReadyScript": "on-ready.js"
+    },
+    {
+      "label": "Show",
+      "url": "http://localhost:5000/show/dayoftheinnocents",
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "selectors": [
+        "main"
+      ],
+      "readyEvent": "backstopjs_ready",
+      "delay": 800,
+      "misMatchThreshold": 0.1,
+      "onBeforeScript": "on-before.js",
+      "onReadyScript": "on-ready.js"
+    },
+    {
+      "label": "Venue",
+      "url": "http://localhost:5000/venue/asb-theatre",
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "selectors": [
+        "main"
+      ],
+      "readyEvent": "backstopjs_ready",
+      "delay": 800,
+      "misMatchThreshold": 0.1,
+      "onBeforeScript": "on-before.js",
+      "onReadyScript": "on-ready.js"
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "../../tests/backstop/bitmaps_reference",
+    "bitmaps_test": "../../tests/backstop/bitmaps_test",
+    "compare_data": "../../tests/backstop/bitmaps_test/compare.json",
+    "casper_scripts": "../../tests/backstop/casper_scripts"
+  },
+  "engine": "slimerjs",
+  "report": ["CLI", "browser"],
+  "cliExitOnFail": false,
+  "casperFlags": [],
+  "debug": false,
+  "port": 3001
+}

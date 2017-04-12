@@ -11,7 +11,12 @@
     "start-server:dev": "webpack --watch --config \"./webpack.config.server.babel.js\" --colors",
     "start-server:prod": "webpack --config \"./webpack.config.server.babel.js\" --colors",
     "start-proc:dev": "nodemon \"./server/start-server.babel\" --watch \"./build/server\"",
-    "start-proc:prod": "node \"./server/start-server.babel\""
+    "start-proc:prod": "node \"./server/start-server.babel\"",
+    "lint": "yarn lint:js && yarn lint:scss",
+    "lint:js": "./node_modules/.bin/eslint \"{client,server}/**/*.{js,jsx}\" --quiet --fix",
+    "lint:scss": "./node_modules/.bin/stylelint server/app/sass/**/*.scss --syntax scss",
+    "precommit": "yarn run lint",
+    "prepush": "yarn test"
   },
   "dependencies": {
     "autoprefixer": "^6.7.7",
@@ -23,8 +28,14 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.24.1",
+    "eslint": "^3.19.0",
+    "eslint-plugin-babel": "^4.1.1",
+    "eslint-plugin-filenames": "^1.1.0",
+    "eslint-plugin-mocha": "^4.9.0",
+    "eslint-plugin-react": "^6.10.3",
     "express": "^4.15.2",
     "extract-text-webpack-plugin": "^2.1.0",
+    "node-fetch": "^1.6.3",
     "node-inspector": "^1.0.1",
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
@@ -34,8 +45,10 @@
     "raven": "^1.2.1",
     "react": "^15.5.3",
     "react-dom": "^15.5.3",
+    "stylelint": "^7.10.1",
     "universal-webpack": "^0.3.9",
     "webpack": "^2.3.3",
-    "webpack-dev-server": "^2.4.2"
+    "webpack-dev-server": "^2.4.2",
+    "winston": "^2.3.1"
   }
 }
