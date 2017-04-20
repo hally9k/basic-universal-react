@@ -15,8 +15,7 @@
     "lint": "yarn lint:js && yarn lint:scss",
     "lint:js": "./node_modules/.bin/eslint \"{client,server}/**/*.{js,jsx}\" --quiet --fix",
     "lint:scss": "./node_modules/.bin/stylelint server/app/sass/**/*.scss --syntax scss",
-    "precommit": "yarn run lint",
-    "prepush": "yarn test"
+    "precommit": "yarn run lint"
   },
   "dependencies": {
     "autoprefixer": "^6.7.7",
