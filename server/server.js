@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 import Raven from 'raven';
-import renderPage from './app/js';
+import renderPage from './app.js';
 
 const app = express();
 
@@ -12,9 +12,9 @@ export default function(parameters) { // eslint-disable-line no-unused-vars
     app.use(express.static(path.join(__dirname, '../client')));
 
     app.get('/*', function(req, res) {
-        res.send(
-            renderPage(req.path)
-        );
+        renderPage(req.url, (dom) => {
+            res.send(dom);
+        });
     });
 
     app.use(Raven.errorHandler());

@@ -1,10 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import getApp from '../app/js/app';
+import { render } from 'react-dom';
+/*
+    Ensure polyfills only load on older browsers
+ */
+// Covers all IE versions and Safari < 11
+const browserSupportsAllFeatures = window.Promise && window.fetch;
 
-class ClientApp extends React.Component {
-    render() {
-        return <h1>Clientside app</h1>;
-    }
+if (browserSupportsAllFeatures) {
+    initialise();
+} else {
+    // See 'Code Splitting' documentation for Webpack (https://webpack.js.org/guides/code-splitting-require/#dependencies)
+    require.ensure([], function() {
+        require('./polyfills.js');
+        initialise();
+    });
 }
 
-ReactDOM.render(<ClientApp />, document.getElementById('root'));
+// /*
+//     Main function
+//  */
+function initialise() {
+    const app = getApp('client');
+    render(app, document.getElementById('root'));
+}
