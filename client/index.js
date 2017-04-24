@@ -20,6 +20,6 @@ if (browserSupportsAllFeatures) {
 //     Main function
 //  */
 function initialise() {
-    const app = getApp('client');
+    const app = getApp('client', null, window.__INITIAL_STATE__); // eslint-disable-line
     render(app, document.getElementById('root'));
 }

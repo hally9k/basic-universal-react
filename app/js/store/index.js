@@ -1,25 +1,29 @@
+import canUseDom from '../utilities/dom';
 import { createEpicMiddleware } from 'redux-observable';
 import epics from '../epics';
 import logger from '../middleware/logger-middleware';
 import reducers from '../reducers';
 import {
     applyMiddleware,
-    // compose,
+    compose,
     createStore } from 'redux';
 
+let composeEnhancers, store;
 
-// const composeEnhancers = window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line no-underscore-dangle
+if (canUseDom()) {
+    composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__; // eslint-disable-line no-underscore-dangle
+} else {
+    composeEnhancers = compose;
+}
 
 const epicMiddleware = createEpicMiddleware(epics);
 
-const enhancer = // composeEnhancers(
-  applyMiddleware(epicMiddleware, logger);
-// );
+const enhancer = composeEnhancers(
+    applyMiddleware(epicMiddleware, logger)
+ );
 
-let store;
-
-export function configureStore() {
-    store = createStore(reducers, enhancer);
+export function configureStore(hydration) { // eslint-disable-line
+    store = createStore(reducers, hydration, enhancer);
     return store;
 }
 

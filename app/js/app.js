@@ -9,8 +9,8 @@ import {
 import 'rxjs';
 import '../sass/index';
 
-export default function getApp(context, location) {
-    const reduxStore = configureStore();
+export default function getApp(context, location, hydration) {
+    const reduxStore = configureStore(hydration);
 
     const Router = {
         server: StaticRouter,

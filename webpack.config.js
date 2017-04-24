@@ -1,4 +1,5 @@
 const paths = require('./config/paths').default;
+// const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const cssCustomProperties = require('postcss-custom-properties');
@@ -34,7 +35,7 @@ const configuration = {
         chunkFilename: '[name].js'
         // chunkFilename: '[name].[hash].js'
     },
-
+    devtool: 'source-map',
     module:
     {
         rules:
@@ -112,10 +113,24 @@ const configuration = {
     },
     plugins: [],
     resolve: {
-        extensions: ['.css', '.js', '.json', '.jsx', '.scss'],
-        modules: [
-            'node_modules'
-        ],
+        extensions: ['.css', '.js', '.json', '.jsx', '.scss']
+        // modules: [
+        //     path.resolve(__dirname, 'app/js'),
+        //     'node_modules'
+        // ]
+        // alias: {
+        //     actions: path.resolve(__dirname, '../app/js/actions'),
+        //     components: path.resolve(__dirname, '../app/js/components'),
+        //     epics: path.resolve(__dirname, '../app/js/epics'),
+        //     middleware: path.resolve(__dirname, '../app/js/middleware'),
+        //     modules: path.resolve(__dirname, '../app/js/modules'),
+        //     reducers: path.resolve(__dirname, '../app/js/reducers'),
+        //     router: path.resolve(__dirname, '../app/js/router'),
+        //     selectors: path.resolve(__dirname, '../app/js/selectors'),
+        //     store: path.resolve(__dirname, '../../app/js/store'),
+        //     tests: path.resolve(__dirname, '../app/js/tests'),
+        //     utilities: path.resolve(__dirname, '../app/js/utilities')
+        // }
     },
 };
 

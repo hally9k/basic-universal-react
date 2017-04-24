@@ -1,8 +1,15 @@
+import canUseDom from '../../utilities/dom';
 import GitHubUser from '../../components/github-user-component';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 class Root extends Component {
+
+    componentWillMount() {
+        if (canUseDom()) {
+            this.props.fetchPage('otter');
+        }
+    }
 
     render() {
         return (
@@ -21,6 +28,7 @@ Root.propTypes = {
     history: PropTypes.object,
     user: PropTypes.object,
     error: PropTypes.object,
+    fetchPage: PropTypes.func.isRequired,
     getGitHubUser: PropTypes.func.isRequired
 };
 

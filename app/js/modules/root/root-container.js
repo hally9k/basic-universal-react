@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import Root from './root-module';
 import selectGitHubError from '../../selectors/github-error-selector';
 import selectGitHubUser from '../../selectors/github-user-selector';
+import selectPage from '../../selectors/select-page';
 import { withRouter } from 'react-router';
 
 function mapStateToProps(state) {
     return {
+        page: selectPage(state),
         user: selectGitHubUser(state),
         error: selectGitHubError(state)
     };
@@ -14,6 +16,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
+        fetchPage: () => {
+            dispatch(rootActions.getPageData('otter'));
+        },
         getGitHubUser: (reply) => {
             dispatch(rootActions.getGitHubUser(reply));
         }
