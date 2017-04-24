@@ -1,5 +1,6 @@
 import { BrowserRouter } from 'react-router-dom';
 import { configureStore } from './store';
+import { fromJS } from 'immutable';
 import { Provider } from 'react-redux';
 import React from 'react';
 import Routes from './router';
@@ -10,7 +11,9 @@ import 'rxjs';
 import '../sass/index';
 
 export default function getApp(context, location, hydration) {
-    const reduxStore = configureStore(hydration);
+    const initialState = { root: fromJS(hydration.root) };
+
+    const reduxStore = configureStore(initialState);
 
     const Router = {
         server: StaticRouter,

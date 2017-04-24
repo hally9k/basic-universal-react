@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 class Root extends Component {
 
     componentWillMount() {
-        if (canUseDom()) {
+        if (canUseDom() && !this.props.page) {
             this.props.fetchPage('otter');
         }
     }
@@ -18,6 +18,8 @@ class Root extends Component {
                     user={this.props.user}
                     error={this.props.error}
                     getGitHubUser={this.props.getGitHubUser} />
+
+                { JSON.stringify(this.props.page) }
             </div>
         );
     }
@@ -29,7 +31,8 @@ Root.propTypes = {
     user: PropTypes.object,
     error: PropTypes.object,
     fetchPage: PropTypes.func.isRequired,
-    getGitHubUser: PropTypes.func.isRequired
+    getGitHubUser: PropTypes.func.isRequired,
+    page: PropTypes.object
 };
 
 export default Root;

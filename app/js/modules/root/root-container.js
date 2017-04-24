@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Root from './root-module';
 import selectGitHubError from '../../selectors/github-error-selector';
 import selectGitHubUser from '../../selectors/github-user-selector';
-import selectPage from '../../selectors/select-page';
+import selectPage from '../../selectors/page-selector';
 import { withRouter } from 'react-router';
 
 function mapStateToProps(state) {
