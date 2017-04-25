@@ -4,7 +4,9 @@ import getApp from '../app/js/app';
 import ReactDOMServer from 'react-dom/server';
 
 function renderPage(url, callback) {
-    fetch(ENDPOINTS.PAGES).then((page) => {
+    return fetch(`${ENDPOINTS.PAGES}${url.replace(/\//g, '')}`)
+    .then((response) => {
+        const page = response.errors ? {} : response;
         const initialStateHydration = { root: { page } };
         const app = getApp('server', url, initialStateHydration);
         const dom = renderPartial(app);

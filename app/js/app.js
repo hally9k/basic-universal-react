@@ -10,7 +10,7 @@ import {
 import 'rxjs';
 import '../sass/index';
 
-export default function getApp(context, location, hydration) {
+export default function getApp(context, url, hydration) {
     const initialState = { root: fromJS(hydration.root) };
 
     const reduxStore = configureStore(initialState);
@@ -23,7 +23,7 @@ export default function getApp(context, location, hydration) {
     const routerContext = {};
 
     const routerProps = {
-        server: { context: routerContext, location },
+        server: { context: routerContext, location: url },
         client: { }
     }[context];
 

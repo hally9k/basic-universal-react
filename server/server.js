@@ -14,6 +14,9 @@ export default function(parameters) { // eslint-disable-line no-unused-vars
     app.get('/*', function(req, res) {
         renderPage(req.url, (dom) => {
             res.send(dom);
+        })
+        .catch((error) => {
+            res.send(error);
         });
     });
 
